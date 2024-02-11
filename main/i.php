@@ -2,7 +2,7 @@
     <head><title>I</title></head>
     <body>
         <?php 
-        $name = $_POST["name"];
+        $name = $_POST["email"];
         echo $name;
         ?>
     </body>

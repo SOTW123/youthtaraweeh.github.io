@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Youth Taraweeh 2024</title>
-<style>
-  /* Reset default browser styles */
-  * {
-    
-  }
-
+<html>
+    <head><title> Login </title>
+    <style>
   body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #005C3B, #333333); /* Dark green to dark gray gradient */
@@ -44,23 +35,11 @@
     font-size: 18px;
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-
-  .title-box {
-    background-color: #333333; /* Dark gray */
-    padding: 40px;
-    margin-bottom: 20px;
-    animation: slideIn 1s ease-in-out forwards;
-  }
 
   @keyframes slideIn {
     0% {
       opacity: 0;
+      transform: rotate(90);
       transform: translateY(-100px);
     }
     100% {
@@ -181,29 +160,15 @@ p {
   color: #CCCCCC; /* Light gray text */
   font-size: 32px;
 }
-.hot {
-  color: white;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
 
-.hot:hover {
-  transform: scale(1.1); /* Increase scale by 10% */
-}
 </style>
 </head>
 <body>
-  
-    
+    <div class = "main">
+        <div>
 
-  <div class="container hot">
-    <div class="title-box">
-      <h2> Welcome to Youth Taraweeh 2024 </h2>
-      <p> Get Started <a href="register.html">here </a> <br> or <br> <a href="loginpage.html">Login</a></p>
+        </div>
     </div>
-  </div>    
-  <footer>
-    <p>&copy; Youth Taraweeh @ <a href="https://www.irvingmasjid.org/" target="_blank">Islamic Center of Irving.</a> All rights reserved.</p>
-  </footer>
+  
 </body>
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,7 +47,7 @@
             top: 75px;
             left: 35%;
             background-color: #202225;
-            animation: slideIn 2s ease-in-out forwards;
+            animation: slideIn 1s ease-in-out forwards;
         }
         .f {
             margin: 50px 50px 50px 50px;
@@ -75,12 +75,14 @@
         
     </nav>
     <div class="main">
-        <form action="i.php" method="POST" class="f">
+        <form action="process.php" method="POST" class="f">
             <label for="email"> Email: </label> <input name="email"type="text" id="email" required> <br><br>
-            <label for="username"> Username: </label> <input type="text" id="username" required> <br><br>
-            <label for="password"> Password: </label> <input type="text" id="password" required> <br><br>
+            <label for="username"> Username: </label> <input name="username"type="text" id="username" required> <br><br>
+            <label for="password"> Password: </label> <input name="password"type="password" id="password" required> <br><br>
+            <label for="numpeople"> Number of People in Your Group: </label> <input name="numpeople"type="number" id="numpeople" min="2" max="10"required><br><br>
             <input type="submit" class="submit">
         </form>
+        
     </div>
     
 
