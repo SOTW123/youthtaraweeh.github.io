@@ -35,11 +35,11 @@ if($result) {
             $deleteResult = mysqli_query($conn, $deleteQuery);
             
             // Redirect to the day.php page
-            header("Location: day.php?day=$day");
+            header("Location: landingpage.php?day=$day");
             exit();
         } else {
             // Redirect with error message if the slot is already filled
-            header("Location: day.php?day=$day&error=Slot already filled.");
+            header("Location: landingpage.php?day=$day&error=Slot already filled.");
             exit();
         }
     }
