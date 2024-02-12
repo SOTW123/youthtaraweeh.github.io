@@ -5,7 +5,6 @@ include("basic.php");
 include("selectconnection.php");
 $myemail = $_SESSION['email'];
 $num = $_GET['slot_number'];
-$day = $_GET['day'];
 
 $sqls = "SELECT email FROM slotselect WHERE slotnum='$num'";
 $result = mysqli_query($conn, $sqls);
@@ -35,11 +34,11 @@ if($result) {
             $deleteResult = mysqli_query($conn, $deleteQuery);
             
             // Redirect to the day.php page
-            header("Location: landingpage.php?day=$day");
+            header("Location: landingpage.php");
             exit();
         } else {
             // Redirect with error message if the slot is already filled
-            header("Location: landingpage.php?day=$day&error=Slot already filled.");
+            header("Location: landingpage.php?error=Slot already filled.");
             exit();
         }
     }

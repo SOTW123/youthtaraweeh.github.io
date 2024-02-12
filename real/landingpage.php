@@ -13,7 +13,7 @@
         
         .slot {
             height: 50px;
-            width: 300px;
+            width: 700px;
             background-color: white; 
             display: flex;
             border-radius: 10cm;
@@ -21,7 +21,7 @@
         }
         .m1 {
             height: 50px;
-            width: 200px;
+            width: 700px;
             background-color: lightgreen;
             border-top-left-radius: 10cm;
             border-bottom-left-radius: 10cm;
@@ -32,13 +32,14 @@
         }
         .m2 {
             height: 50px;
-            width: 100px;
+            width: 400px;
             background-color: lightgreen;
             opacity: 50%;
             transition: 0.1s;
             border-top-right-radius: 10cm;
             border-bottom-right-radius: 10cm;
             text-decoration: none;
+            display : flex;
             text-align: center;
             align-items: center;
         }
@@ -52,25 +53,25 @@
         }
         .booked {
             height: 50px;
-            width: 100px;
-            background-color: red;
-            opacity: 50%;
+            width: 400px;
+            background-color: #FF6961;
+            
             transition: 0.1s;
             border-top-right-radius: 10cm;
             border-bottom-right-radius: 10cm;
             text-decoration: none;
             text-align: center;
             align-items: center;
-            
+            color: black;
             
         }
         .booked:hover {
-            background-color: darkred;
+            background-color: #A94442;
             transform: scale(1.1);
             opacity: 100%;
         }
         .booked:active {
-            background-color: #880808;
+            background-color: darkred;
         }
         .error {
             background: #F2DEDE;
@@ -112,7 +113,7 @@
     }
 
 // Display or use the updated day variable
-echo "Current Day: " . $_SESSION['day'];
+
 // Store the current day value in session
     $email = $_SESSION['email'];
     // Assuming $numSlots contains the number of slots you want to generate
@@ -138,9 +139,30 @@ echo "Current Day: " . $_SESSION['day'];
     
         return $result;
     }
-    $currday = $_SESSION['day'];
+    $currday = 1;
     $result = generate($currday);
     $_SESSION['list'] = $result;
+    
+    function setemails($conn) {
+        // the idea being that $mylist[0] = email @ slot 1 & $mylist[5] = email @ slot 5
+        $mylist = array('','','','','','');
+        $mysql = "SELECT email, slotnum FROM slotselect ORDER BY slotselect.slotnum ASC";
+        $myres = mysqli_query($conn, $mysql);
+
+        if($myres) {
+            while($row = mysqli_fetch_assoc($myres)) {
+                $myemail = $row['email'];
+                $myslot = $row['slotnum'];
+                if(!preg_match('/^[a-fA-F]/',$myemail)) {
+                    $mylist[$myslot-1] = $myemail;
+                }
+            }
+        }
+        return $mylist;
+    }
+    $mylist=setemails($conn);
+
+
     function verify($conn) {
         // Initialize the array to hold the slot verification status
         $slots = array('false', 'false', 'false', 'false', 'false', 'false');
@@ -178,6 +200,7 @@ echo "Current Day: " . $_SESSION['day'];
         <?php 
         $list = $_SESSION['list']; 
         echo $list[0][0] . ' to ' . $list[0][1];
+        //$l = setemails($conn); if($l[0]!='') {echo '$l[0]';}
         ?>
         </div>
         
@@ -190,7 +213,7 @@ echo "Current Day: " . $_SESSION['day'];
             </a> <?php
             } else {
                 ?><a href="slotprocess.php?slot_number=1&day=1" class="booked">
-                <div class="booked"></div>
+                <div class="booked"><?php $l = setemails($conn); if($l[0]!='') {echo $l[0];} ?></div>
             </a><?php
             }
         ?>
@@ -210,7 +233,7 @@ echo "Current Day: " . $_SESSION['day'];
             </a> <?php
             } else {
                 ?><a href="slotprocess.php?slot_number=2&day=1" class="booked">
-                <div class="booked"></div>
+                <div class="booked"><?php $l = setemails($conn); if($l[1]!='') {echo $l[1];} ?></div>
             </a><?php
             }
         ?>
@@ -230,7 +253,7 @@ echo "Current Day: " . $_SESSION['day'];
             </a> <?php
             } else {
                 ?><a href="slotprocess.php?slot_number=3&day=1" class="booked">
-                <div class="booked"></div>
+                <div class="booked"><?php $l = setemails($conn); if($l[2]!='') {echo $l[2];} ?></div>
             </a><?php
             }
         ?>
@@ -250,7 +273,7 @@ echo "Current Day: " . $_SESSION['day'];
             </a> <?php
             } else {
                 ?><a href="slotprocess.php?slot_number=4&day=1" class="booked">
-                <div class="booked"></div>
+                <div class="booked"><?php $l = setemails($conn); if($l[3]!='') {echo $l[3];} ?></div>
             </a><?php
             }
         ?>
@@ -270,7 +293,7 @@ echo "Current Day: " . $_SESSION['day'];
             </a> <?php
             } else {
                 ?><a href="slotprocess.php?slot_number=5&day=1" class="booked">
-                <div class="booked"></div>
+                <div class="booked"><?php $l = setemails($conn); if($l[4]!='') {echo $l[4];} ?></div>
             </a><?php
             }
         ?>
@@ -290,7 +313,7 @@ echo "Current Day: " . $_SESSION['day'];
             </a> <?php
             } else {
                 ?><a href="slotprocess.php?slot_number=6&day=1" class="booked">
-                <div class="booked"></div>
+                <div class="booked"><?php $l = setemails($conn); if($l[5]!='') {echo $l[5];} ?></div>
             </a><?php
             }
         ?>

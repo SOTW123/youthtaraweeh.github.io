@@ -10,7 +10,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['numpeop
 $email = $_POST['email'];
 $pass = $_POST['password'];
 $numpeople = $_POST['numpeople'];
-$_SESSION['numppl'] = $numpeople;
+$_SESSION['email'] = $email;
 if (empty($email)) {
     header("Location: register.php?error=Email is required");
     exit();
